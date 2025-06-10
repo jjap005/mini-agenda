@@ -1,6 +1,7 @@
 require 'singleton'
 require_relative '../domains/contacts/contact'
 require_relative '../queries/find_contact'
+require_relative '../validators/email_validator'
 
 module MiniAgenda::Lib
   class GenServer
@@ -12,6 +13,7 @@ module MiniAgenda::Lib
 
     def add_contact(name:, phone:, email:)
       key = name.strip.downcase
+      raise "Duplicate contact" if @contacts.key?(key)
 
       contact = Domains::Contacts::Contact.new(name: name, phone: phone, email: email)
       @contacts[key] = contact
