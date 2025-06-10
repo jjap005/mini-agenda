@@ -1,6 +1,7 @@
 require 'singleton'
 require_relative '../domains/contacts/contact'
 require_relative '../queries/find_contact'
+require_relative '../queries/list_contacts'
 require_relative '../validators/email_validator'
 
 module MiniAgenda
@@ -29,6 +30,10 @@ module MiniAgenda
         raise "Contact not found" unless @contacts.key?(key)
 
         @contacts.delete(key)
+      end
+
+      def list_contacts
+        Queries::ListContacts.call(contacts: @contacts)
       end
     end
   end
