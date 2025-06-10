@@ -24,6 +24,12 @@ module MiniAgenda
         Queries::FindContact.call(contacts: @contacts, name: name)
       end
 
+      def remove_contact(name:)
+        key = name.strip.downcase
+        raise "Contact not found" unless @contacts.key?(key)
+
+        @contacts.delete(key)
+      end
     end
   end
 end
