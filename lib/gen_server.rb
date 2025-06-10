@@ -1,5 +1,6 @@
 require 'singleton'
 require_relative '../domains/contacts/contact'
+require_relative '../queries/find_contact'
 
 module MiniAgenda::Lib
   class GenServer
@@ -15,5 +16,10 @@ module MiniAgenda::Lib
       contact = Domains::Contacts::Contact.new(name: name, phone: phone, email: email)
       @contacts[key] = contact
     end
+
+    def find_contact(name:)
+      Queries::FindContact.call(contacts: @contacts, name: name)
+    end
+
   end
 end
