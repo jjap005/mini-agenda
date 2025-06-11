@@ -22,7 +22,7 @@ module MiniAgenda
       end
 
       def find_contact(name:)
-        Queries::FindContact.call(contacts: @contacts, name: name)
+        @contacts[name.strip.downcase]
       end
 
       def remove_contact(name:)
@@ -33,7 +33,7 @@ module MiniAgenda
       end
 
       def list_contacts
-        Queries::ListContacts.call(contacts: @contacts)
+        @contacts.values.sort_by(&:name)
       end
 
       def reset!

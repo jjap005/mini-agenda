@@ -1,8 +1,8 @@
 module MiniAgenda
   module Queries
     class ListContacts
-      def self.call(contacts:)
-        contacts.values.sort_by(&:name)
+      def self.call
+        MiniAgenda::Lib::GenServer.instance.list_contacts
       end
     end
   end
