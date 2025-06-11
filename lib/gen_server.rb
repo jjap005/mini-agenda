@@ -35,6 +35,10 @@ module MiniAgenda
       def list_contacts
         Queries::ListContacts.call(contacts: @contacts)
       end
+
+      def reset!
+        @contacts.clear
+      end
     end
   end
 end
