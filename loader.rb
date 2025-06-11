@@ -23,3 +23,9 @@ require_relative 'queries/list_contacts'
 # Presentation
 require_relative 'presenters/contact_presenter'
 require_relative 'formatters/contact_formatter'
+
+# Events
+require_relative 'events/contact_added'
+require_relative 'events/contact_removed'
+require_relative 'events/event_store'
+require_relative 'events/base_event'

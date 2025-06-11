@@ -1,3 +1,5 @@
+require_relative 'base_event'
+
 module MiniAgenda
   module Events
     class ContactAdded < BaseEvent

@@ -36,6 +36,11 @@ def show_json_all
   )
 end
 
+def replay_events
+  puts "\n🎞 Reproduciendo eventos:"
+  MiniAgenda::Events::EventStore.instance.replay
+end
+
 # ------------------------------
 # 🧪 Batería de datos de prueba
 # ------------------------------
@@ -63,3 +68,7 @@ list_all
 
 # También en JSON
 show_json_all
+
+# Reproducción de eventos
+replay_events
+puts "\n✅ Prueba de batería completada.\n"
